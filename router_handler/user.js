@@ -36,7 +36,7 @@ exports.regUser = (req, res) => {
         //定义插入用户的 SQL 语句
         const insertUserSql = 'insert into ev_users set ?'
         //执行sql语句
-        db.query(insertUserSql, { username: userinfo.username, password: userinfo.password }, function (err, results) {
+        db.query(insertUserSql, { username: userinfo.username, password: userinfo.password, nickname: `新用户1225`}, function (err, results) {
             // 执行 SQL 语句失败
             if (err) return res.cc(err)
             // SQL 语句执行成功，但影响行数不为 1
