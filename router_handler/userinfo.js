@@ -31,7 +31,7 @@ exports.getUserInfo = (req, res) => {
 // 更新用户基本信息的处理函数
 exports.updateUserInfo = (req, res) => {
     const sql = `update ev_users set ? where id=?`
-    db.query(sql, [req.body], (err, results) => {
+    db.query(sql, [req.body, req.body.id], (err, results) => {
         // 执行 SQL 语句失败
         if (err) return res.cc(err)
         
