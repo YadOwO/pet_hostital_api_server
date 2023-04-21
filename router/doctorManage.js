@@ -10,6 +10,9 @@ const expressJoi = require('@escook/express-joi')
 const { add_doctor_schema } = require('../schema/doctor')
 
 // 新增医生
-router.post('/adddoctor', expressJoi(add_doctor_schema), doctorManageHandler.addDoctor)
+router.post('/addDoctor', expressJoi(add_doctor_schema), doctorManageHandler.addDoctor)
+
+// 获取所有医生信息
+router.get('/getAllDoctor', doctorManageHandler.getAllDoctor)
 
 module.exports = router

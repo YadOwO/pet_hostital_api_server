@@ -33,3 +33,20 @@ exports.addDoctor = (req, res) => {
     })
 
 }
+
+// 获取所有医生信息
+exports.getAllDoctor = (req, res) => {
+    // 定义获取所有医生信息的 SQL 语句
+    const getAllDoctorsSql = 'select * from doctor'
+    // 执行 SQL 语句
+    db.query(getAllDoctorsSql, function (err, results) {
+        // 执行 SQL 语句失败
+        if (err) return res.cc(err)
+        // 执行 SQL 语句成功
+        res.send({
+            status: 0,
+            message: '获取医生列表成功',
+            data: results
+        })
+    })
+}
