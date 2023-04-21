@@ -2,21 +2,25 @@
 const db = require('../db/index')
 
 //新增医生处理函数
-exports.addDockor = (rep, res) => {
+exports.addDoctor = (req, res) => {
+    // 接受表单数据
+    const { doctor_name, phone, profile, weChat,jobTitle,
+            label, skilled, fans, chuFang, askNum, } = req.body
+
     // 定义新增医生的 SQL 语句
     const insertDoctorSql = 'insert into doctor set ?'
     // 执行 SQL 语句
     db.query(insertDoctorSql, {
-        doctor_name: '医生名称',
-        phone: '123456789',
-        profile: '医生简介',
-        weChat: '微信号',
-        label: '医生标签',
-        skilled: '擅长领域',
-        fans: 1000,
-        chuFang: 500,
-        askNum: 10000,
-        jobTitle: '医生职称'
+        doctor_name,
+        phone,
+        profile,
+        weChat,
+        label,
+        skilled,
+        fans,
+        chuFang,
+        askNum,
+        jobTitle
         }, function (err, results) {
         // 执行 SQL 语句失败
         if (err) return res.cc(err)

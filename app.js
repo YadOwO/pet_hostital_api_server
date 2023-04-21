@@ -44,8 +44,8 @@ const userinfoRouter = require('./router/userinfo')
 app.use('/my', userinfoRouter)
 
 //导入并使用医生管路路由模块
-const dockorRouter = require('./router/dockorManage')
-app.use('/api', dockorRouter)
+const doctorRouter = require('./router/doctorManage')
+app.use('/api', doctorRouter)
 
 // 错误中间件
 app.use(function (err, req, res, next) {
