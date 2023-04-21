@@ -50,3 +50,22 @@ exports.getAllDoctor = (req, res) => {
         })
     })
 }
+
+// 根据id删除医生
+exports.deleteDoctor = (req, res) => {
+    // 获取id
+    const { id } = req.body
+    // 定义根据 id 删除医生的 SQL 语句
+    const deleteDoctorSql = 'delete from doctor where doctor_id=?'
+    // 执行 SQL 语句
+    db.query(deleteDoctorSql, [id], function (err, results) {
+    // 执行 SQL 语句失败
+    if (err) return res.cc(err)
+    // SQL 语句执行成功，但影响行数不为 1
+    if (results.affectedRows !== 1) {
+        return res.cc('删除医生失败，请稍后再试！')
+    }
+    // 删除医生成功
+    res.cc('删除医生成功！', 0)
+    })
+}

@@ -9,6 +9,10 @@ const joi = require('joi')
  * pattern(正则表达式) 值必须符合正则表达式的规则
  */
 
+
+// id
+const id = joi.number().integer().min(1).required()
+
 //医生姓名
 const doctor_name = joi.string().min(2).max(8).regex(/^[\u4E00-\u9FA5]{2,4}$/).required();
 
@@ -46,6 +50,13 @@ exports.add_doctor_schema = {
       askNum: number,
       jobTitle
     },
+}
+
+// 验证规则对象 - 删除医生
+exports.delete_doctor_schema = {
+  body: {
+    id,
+  },
 }
 
 // 验证规则对象 - 更新头像
