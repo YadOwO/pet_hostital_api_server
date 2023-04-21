@@ -69,3 +69,35 @@ exports.deleteDoctor = (req, res) => {
     res.cc('删除医生成功！', 0)
     })
 }
+
+// 更新医生信息
+exports.updateDoctor = (req, res) => {
+    // 接受表单数据
+    const { doctor_name, phone, profile, weChat,jobTitle,
+        label, skilled, fans, chuFang, askNum, id} = req.body
+        
+    // 定义修改医生信息的 SQL 语句
+    const updateDoctorSql = 'update doctor set ? where doctor_id=?'
+    // 执行 SQL 语句
+    db.query(updateDoctorSql, [{
+    doctor_name,
+    phone,
+    profile,
+    weChat,
+    label,
+    skilled,
+    fans,
+    chuFang,
+    askNum,
+    jobTitle
+    }, id], function (err, results) {
+    // 执行 SQL 语句失败
+    if (err) return res.cc(err)
+    // SQL 语句执行成功，但影响行数不为 1
+    if (results.affectedRows !== 1) {
+        return res.cc('修改医生信息失败，请稍后再试！')
+    }
+    // 修改医生信息成功
+    res.cc('修改医生信息成功！', 0)
+    })
+}

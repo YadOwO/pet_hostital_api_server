@@ -52,6 +52,24 @@ exports.add_doctor_schema = {
     },
 }
 
+// 更新医生信息的验证规则对象
+exports.update_doctor_schema = {
+  // 表示需要对 req.body 中的数据进行验证
+  body: {
+    id,
+    doctor_name,
+    phone,
+    weChat,
+    profile: ProfileLabelSkilled,
+    label: ProfileLabelSkilled,
+    skilled: ProfileLabelSkilled,
+    fans: number,
+    chuFang: number,
+    askNum: number,
+    jobTitle
+  },
+}
+
 // 验证规则对象 - 删除医生
 exports.delete_doctor_schema = {
   body: {
