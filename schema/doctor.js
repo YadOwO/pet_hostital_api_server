@@ -33,7 +33,7 @@ const jobTitle = joi.string().max(50).required();
 
 // dataUri() 指的是如下格式的字符串数据：
 // data:image/png;base64,VE9PTUFOWVNFQ1JFVFM=
-const avatar = joi.string().dataUri().required()
+const avatar = joi.string().required()
 
 // 新增医生的验证规则对象
 exports.add_doctor_schema = {
@@ -81,5 +81,6 @@ exports.delete_doctor_schema = {
 exports.update_avatar_schema = {
   body: {
     avatar,
+    id
   },
 }

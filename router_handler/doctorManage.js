@@ -103,8 +103,8 @@ exports.updateDoctor = (req, res) => {
 }
 
 exports.updateAvatar = (req, res) => {
-    const sql = 'update doctor set doctor_pic=? where id=?'
-    db.query(sql, [req.body.avatar, req.user.id], (err, results) => {
+    const sql = 'update doctor set doctor_pic=? where doctor_id=?'
+    db.query(sql, [req.body.avatar, req.body.id], (err, results) => {
         // 执行 SQL 语句失败
         if (err) return res.cc(err)
     
