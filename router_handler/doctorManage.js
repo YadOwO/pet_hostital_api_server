@@ -17,9 +17,9 @@ exports.addDoctor = (req, res) => {
         weChat,
         label,
         skilled,
-        fans,
-        chuFang,
-        askNum,
+        fans: fans || 0,
+        chuFang: chuFang || 0,
+        askNum: askNum || 0,
         jobTitle
         }, function (err, results) {
         // 执行 SQL 语句失败

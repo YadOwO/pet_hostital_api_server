@@ -28,6 +28,9 @@ const ProfileLabelSkilled = joi.string().max(255).required();
 //粉丝数、处方数、问诊数
 const number = joi.number().integer().min(0);
 
+//粉丝数、处方数、问诊数(更新信息时必填)
+const numberRequired = joi.number().integer().min(0).required();
+
 //医生头衔
 const jobTitle = joi.string().max(50).required();
 
@@ -63,9 +66,9 @@ exports.update_doctor_schema = {
     profile: ProfileLabelSkilled,
     label: ProfileLabelSkilled,
     skilled: ProfileLabelSkilled,
-    fans: number,
-    chuFang: number,
-    askNum: number,
+    fans: numberRequired,
+    chuFang: numberRequired,
+    askNum: numberRequired,
     jobTitle
   },
 }
