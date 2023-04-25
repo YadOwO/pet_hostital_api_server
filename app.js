@@ -47,6 +47,10 @@ app.use('/my', userinfoRouter)
 const doctorRouter = require('./router/doctorManage')
 app.use('/api', doctorRouter)
 
+// 导入并使用宠物模块
+const petRouter = require('./router/pet')
+app.use('/myPet', petRouter)
+
 // 错误中间件
 app.use(function (err, req, res, next) {
   // 数据验证失败
