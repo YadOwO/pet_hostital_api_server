@@ -42,6 +42,29 @@ exports.add_pet_schema = {
     },
 }
 
+// 更新宠物的验证规则对象
+exports.update_pet_schema = {
+    // 表示需要对 req.body 中的数据进行验证
+    body: {
+      pet_name,
+      species,
+      age,
+      medical_info,
+      pet_id: id,
+      pet_gender,
+      isSterilization,
+      weight
+    },
+}
+
+// 根据用户id获取宠物
+exports.getPet_schema = {
+    body: {
+        ev_users_id: id
+    }
+}
+
+// 删除宠物验证规则
 exports.deletePet_schema = {
     body: {
         pet_id: id
