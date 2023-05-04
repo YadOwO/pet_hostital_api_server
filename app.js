@@ -47,9 +47,17 @@ app.use('/my', userinfoRouter)
 const doctorRouter = require('./router/doctorManage')
 app.use('/api', doctorRouter)
 
+//导入并使用医生管路路由模块
+const petTypeRouter = require('./router/pet_species')
+app.use('/api', petTypeRouter)
+
 // 导入并使用宠物模块
 const petRouter = require('./router/pet')
 app.use('/myPet', petRouter)
+
+// 导入并使用预约单模块
+const appointmentRouter = require('./router/appointment')
+app.use('/my', appointmentRouter)
 
 // 错误中间件
 app.use(function (err, req, res, next) {

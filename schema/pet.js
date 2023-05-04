@@ -6,6 +6,9 @@ const pet_name = joi.string().min(1).max(50).required();
 // 宠物种类
 const species = joi.string().min(1).max(50).required();
 
+// 宠物种类(猫或者狗)
+const type = joi.string().min(1).max(10).required();
+
 // 宠物年龄
 const age = joi.number().integer().min(0).required();
 
@@ -19,10 +22,10 @@ const pet_pic = joi.string().uri();
 const id = joi.number().integer().min(1).required()
 
 // 宠物性别
-const pet_gender = joi.number().valid(0, 1).required();
+const pet_gender = joi.string().min(1).max(50).required();
 
 // 绝育状态
-const isSterilization = joi.number().valid(0, 1).required();
+const isSterilization = joi.string().min(1).max(50).required();
 
 // 体重
 const weight = joi.number().min(0).required();
@@ -68,5 +71,13 @@ exports.getPet_schema = {
 exports.deletePet_schema = {
     body: {
         pet_id: id
+    }
+}
+
+// 新增宠物类别
+exports.addPetTypes_schema = {
+    body: {
+        species: type,
+        species_name: species
     }
 }
