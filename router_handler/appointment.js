@@ -60,3 +60,43 @@ exports.updateAppointment = (req, res) => {
     res.cc('修改预约单成功！', 0)
   });
 };
+
+// 根据 ev_user_id 查询预约单处理函数
+exports.getAppointmentsByEvUserId = (req, res) => {
+  // 接受请求参数中的 ev_user_id
+  const { ev_user_id } = req.query;
+
+  // 定义根据 ev_user_id 查询预约单的 SQL 语句
+  const getAppointmentsByEvUserIdSql = 'SELECT * FROM appointment WHERE ev_users_id = ?';
+  // 执行 SQL 语句
+  db.query(getAppointmentsByEvUserIdSql, [ev_user_id], function (err, results) {
+    // 执行 SQL 语句失败
+    if (err) return res.cc(err);
+    // 获取预约单成功
+    res.send({
+      status: 0,
+      message: '获取预约单成功！',
+      data: results,
+    });
+  });
+};
+
+// 根据 doctor_id 查询预约单处理函数
+exports.getAppointmentsByDoctorId = (req, res) => {
+  // 接受请求参数中的 doctor_id
+  const { doctor_id } = req.query;
+
+  // 定义根据 doctor_id 查询预约单的 SQL 语句
+  const getAppointmentsByDoctorIdSql = 'SELECT * FROM appointment WHERE doctor_id = ?';
+  // 执行 SQL 语句
+  db.query(getAppointmentsByDoctorIdSql, [doctor_id], function (err, results) {
+    // 执行 SQL 语句失败
+    if (err) return res.cc(err);
+    // 获取预约单成功
+    res.send({
+      status: 0,
+      message: '获取预约单成功！',
+      data: results,
+    });
+  });
+};

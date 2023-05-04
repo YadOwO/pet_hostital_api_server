@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-// 导入医生管理路由处理函数模块
+// 导入预约单管理路由处理函数模块
 const appointmentManageHandler = require('../router_handler/appointment')
 
 // 1. 导入验证表单数据的中间件
@@ -17,5 +17,8 @@ router.delete('/deleteAppointment', expressJoi(delete_appointment), appointmentM
 
 // 修改预约单
 router.post('/updateDppointment', expressJoi(update_appointment), appointmentManageHandler.updateAppointment)
+
+// 根据 ev_user_id 查询预约单
+router.get('/getAppointmentsByEvUserId', appointmentManageHandler.getAppointmentsByEvUserId)
 
 module.exports = router
