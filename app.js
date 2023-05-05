@@ -59,6 +59,10 @@ app.use('/myPet', petRouter)
 const appointmentRouter = require('./router/appointment')
 app.use('/my', appointmentRouter)
 
+//导入并使用诊疗路由模块
+const treatRouter = require('./router/treat')
+app.use('/api', treatRouter)
+
 // 错误中间件
 app.use(function (err, req, res, next) {
   // 数据验证失败
