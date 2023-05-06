@@ -25,12 +25,31 @@ const classifier = new NaiveBayes({
 classifier.learn('耳朵痒，耳朵分泌物，耳朵异味', '耳螨感染');
 classifier.learn('痒，皮肤发红，皮肤发炎', '跳蚤感染');
 classifier.learn('眼部红肿，流眼泪，分泌物', '结膜炎');
-classifier.learn('口臭，牙结石，牙龈发炎', '口腔问题');
 classifier.learn('咳嗽，呼吸急促，乏力，减肥', '心丝虫病');
+classifier.learn('呕吐，腹泻，食欲不振', '胃肠炎');
+classifier.learn('体重下降，喝水量增加，尿量增加', '糖尿病');
+classifier.learn('皮肤红肿，瘙痒，脱毛', '皮肤过敏');
+classifier.learn('鼻涕，打喷嚏，眼分泌物', '上呼吸道感染');
+classifier.learn('跛行，关节肿胀，活动受限', '关节炎');
+classifier.learn('尿频，尿急，尿痛', '尿路感染');
+classifier.learn('口臭，牙齿松动，牙龈红肿', '牙周病');
+classifier.learn('心跳过快，呼吸困难，活动耐力降低', '心脏病');
+classifier.learn('眼球突出，体重减轻，心悸', '甲状腺功能亢进');
+classifier.learn('抓痒，皮肤破损，脓疱', '疥螨感染');
+classifier.learn('喘息，咳嗽，呼吸困难', '气管炎');
+classifier.learn('腹胀，便秘，恶心', '肠梗阻');
+classifier.learn('喝水量减少，尿量减少，食欲不振', '肾脏病');
+classifier.learn('疼痛，瘀血，软组织肿胀', '软组织损伤');
+classifier.learn('发热，嗜睡，肌肉关节疼痛', '病毒性疾病');
+classifier.learn('肿块，异常出血，体重下降', '肿瘤');
+classifier.learn('抽搐，瞪大眼睛，僵硬', '癫痫发作');
+classifier.learn('脱水，虚弱，心率增快', '热射病');
+classifier.learn('不规律性走路，平衡失调，头晕', '前庭疾病');
+classifier.learn('拒食，流口水，瞳孔放大', '中毒');
 
 // 获取对于各分类的概率数组
-console.log(classifier.categorize('牙结石'))
-console.log(classifier.probabilities('牙结石'))
+console.log(classifier.categorize('发热，嗜睡，肌肉关节疼痛'))
+console.log(classifier.probabilities('发热，嗜睡，肌肉关节疼痛'))
 
 
 // 诊疗处理函数
