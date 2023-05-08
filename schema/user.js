@@ -61,6 +61,6 @@ exports.update_password_schema = {
 // 验证规则对象 - 更新头像
 exports.update_avatar_schema = {
   body: {
-    avatar,
+    avatar
   },
 }

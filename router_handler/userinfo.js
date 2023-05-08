@@ -80,8 +80,7 @@ exports.updatePassword = (req, res) => {
     })
 }
 
-// 更新用户头像的处理函数
-exports.updateAvatar = (req, res) => {
+exports.aaaa = (req, res) =>{
     const sql = 'update ev_users set user_pic=? where id=?'
     db.query(sql, [req.body.avatar, req.user.id], (err, results) => {
         // 执行 SQL 语句失败
@@ -91,6 +90,6 @@ exports.updateAvatar = (req, res) => {
         if (results.affectedRows !== 1) return res.cc('更新头像失败！')
     
         // 更新用户头像成功
-        return res.cc('更新头像成功！', 0)
+        return res.cc(res.body, 0)
     })
 }

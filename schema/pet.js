@@ -81,3 +81,13 @@ exports.addPetTypes_schema = {
         species_name: species
     }
 }
+
+// 新增诊疗单
+exports.add_treatment = {
+    body: {
+        ev_users_id: id,
+        pet_name,
+        symptom: pet_name,
+        result: pet_name
+    }
+}

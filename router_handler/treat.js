@@ -1,3 +1,6 @@
+//导入数据库操作模块
+const db = require('../db/index')
+
 const NaiveBayes = require('naivebayes')
  
 // 使用第三方中文分词库
@@ -65,3 +68,48 @@ exports.treat = (req, res) => {
         data
     })
 }
+
+// 添加诊疗处理函数
+exports.addTreatment = (req, res) => {
+    const { pet_name, symptom, result, ev_users_id } = req.body;
+    const insertTreatmentSql = 'INSERT INTO treatment (pet_name, symptom, result, ev_users_id) VALUES (?, ?, ?, ?)';
+    db.query(insertTreatmentSql, [pet_name, symptom, result, ev_users_id], function (err, results) {
+      if (err) return res.cc(err);
+      if (results.affectedRows !== 1) {
+        return res.cc('新增诊疗单失败，请稍后再试！');
+      }
+      res.cc('新增诊疗单成功！', 0);
+    // res.send(req.body)
+    });
+  };
+
+  // 查询征辽
+  exports.getTreatmentById = (req, res) => {
+    const id = req.query.id;
+    // console.log(req)
+    const selectTreatmentSql = 'SELECT * FROM treatment WHERE ev_users_id = ?';
+    db.query(selectTreatmentSql, [id], function (err, results) {
+      if (err) return res.cc(err);
+      if (results.length === 0) return res.cc('查询诊疗单失败，请检查诊疗单ID是否正确');
+      res.send({
+        status: 0,
+        message: '查询诊疗单成功',
+        data: results,
+      });
+    });
+  };
+  
+  // 删除
+  exports.deleteTreatmentById = (req, res) => {
+    const id = req.query.id;
+    const deleteTreatmentSql = 'DELETE FROM treatment WHERE id = ?';
+    db.query(deleteTreatmentSql, [id], function (err, results) {
+      if (err) return res.cc(err);
+      if (results.affectedRows !== 1) {
+        return res.cc('删除诊疗单失败，请检查诊疗单ID是否正确');
+      }
+      res.cc('删除诊疗单成功', 0);
+    });
+  };
+  
+  
